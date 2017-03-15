@@ -8,6 +8,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.net.URISyntaxException;
+
 /**
  * Created by nickm on 3/14/2017.
  */
@@ -38,8 +40,12 @@ public class SimpleNotification extends Notification {
 
     private void playSound() {
         if(sound != null) {
-            Media media = new Media(sound.getFile().toURI().toString());
-            new MediaPlayer(media).play();
+            try {
+                Media media = new Media(sound.getFile().toURI().toString());
+                new MediaPlayer(media).play();
+            } catch(URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

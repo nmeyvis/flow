@@ -1,6 +1,7 @@
 package com.rfgbot.anywhereparse.ui;
 
-import java.io.File;
+
+import java.net.URL;
 
 /**
  * Created by nickm on 3/14/2017.
@@ -15,7 +16,7 @@ public enum Sound {
         this.name = name;
     }
 
-    public File getFile() {
-        return new File(ClassLoader.getSystemResource("sounds/" + name).getFile());
+    public URL getFile() {
+        return ClassLoader.getSystemResource("sounds/" + name);
     }
 }
