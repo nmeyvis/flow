@@ -24,7 +24,11 @@ public class Main {
 
     public static void main(String[] args) {
 
+        Runtime.getRuntime().addShutdownHook(new Thread(Main::exit));
+
         new Thread(() -> {
+            System.out.println("listening...");
+
             Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
             logger.setLevel(Level.OFF);
 
@@ -44,8 +48,6 @@ public class Main {
 
             new App(trigger, clipboardIO, clipboardIO, interpreter);
 
-            KeyCombo exitTrigger = new KeyCombo(NativeKeyEvent.VC_ESCAPE);
-            GlobalScreen.addNativeKeyListener(new KeyComboListener(exitTrigger, Main::exit));
             GlobalScreen.addNativeKeyListener(new KeyComboListener(KeyCombo.Native.COPY, () -> {
                 System.out.println("triggered copy");
             }));
