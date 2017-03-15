@@ -14,7 +14,7 @@ public class MemeAddon implements Addon {
     private static Map<String, String> memeMap = new HashMap<>();
 
     static {
-        memeMap.put("fliptable", "(╯°□°）╯︵ ┻━┻) ");
+        memeMap.put("fliptable", "(╯°□°）╯︵ ┻━┻");
         memeMap.put("knife", ")xxxxx[;;;;;;;;;>");
         memeMap.put("boobs", "(.)(.)");
         memeMap.put("smug", "(‾⌣‾)");
