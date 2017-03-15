@@ -46,13 +46,16 @@ Pressing the hotkey `CTRL + ALT + F` will replace your text with the evaluted ou
 ### Currency
 
 Syntax:
-`$$:<currency symbol>:<amount>`
+`$$:<currency code>:<amount>`
 
 Example:
 > I bought some cheese for `$$:aud:3.50`
 
 Output:
 > I bought some cheese for $4.63 (AUD)
+
+[Currency Codes are available here](https://en.wikipedia.org/wiki/ISO_4217#Active_codes)
+
 
 ### Meme
 Syntax:
@@ -85,3 +88,5 @@ Example:
 
 Output: 
 > Bonjour, mon nom est Jim, comment allez-vous?
+
+[Language codes are available here](https://cloud.google.com/translate/docs/languages)
