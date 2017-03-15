@@ -1,5 +1,4 @@
 # Flow
----
 
 Flow is a templating language for your everyday life. Instead of looking things up during conversation, simply continue
 your thought flow with templates.
@@ -30,7 +29,6 @@ Flow works on any application.
 
 
 ## Usage
----
 
 Templates start with `$`, then you specify parameters and terminate with a pipe `|`. If your template is at
 the end of your message, you can omit the pipe.
@@ -44,7 +42,6 @@ Pressing the hotkey `CTRL + ALT + F` will replace your text with the evaluted ou
 
 
 ## Current Addons
----
 
 ### Currency
 
@@ -64,7 +61,9 @@ Syntax:
 Example: 
 `$meme:fliptable`
 
-####
+Output:
+> (╯°□°）╯︵ ┻━┻
+
 | Name      | Meme              |
 |-----------|-------------------|
 | fliptable | (╯°□°）╯︵ ┻━┻    |
@@ -76,8 +75,6 @@ Example:
 | power     | ᕦ(ò_óˇ)ᕤ          |
 | lenny     | (͡° ͜ʖ ͡°)           |
 
-Output:
-> (╯°□°）╯︵ ┻━┻
 
 ### Translate
 Syntax: 
