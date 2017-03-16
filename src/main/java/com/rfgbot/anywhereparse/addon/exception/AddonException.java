@@ -1,12 +1,15 @@
-package com.rfgbot.anywhereparse.addon;
+package com.rfgbot.anywhereparse.addon.exception;
+
+import com.rfgbot.anywhereparse.addon.Addon;
 
 /**
+ * General exception that encapsulates any exception thrown during the execution of an addon
  * Created by nickm on 3/14/2017.
  */
 public class AddonException extends RuntimeException {
     private Addon source;
 
-    public AddonException(RuntimeException e) {
+    public AddonException(Throwable e) {
         super(e);
     }
 

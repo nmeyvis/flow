@@ -1,7 +1,7 @@
 package com.rfgbot.anywhereparse.addon.meme;
 
 import com.rfgbot.anywhereparse.addon.Addon;
-import com.rfgbot.anywhereparse.addon.AddonException;
+import com.rfgbot.anywhereparse.addon.exception.UserInputException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +53,7 @@ public class MemeAddon implements Addon {
         String meme = memeMap.get(name);
 
         if(meme == null) {
-            throw new AddonException("no meme by " + name);
+            throw new UserInputException("no meme by " + name);
         }
 
         return meme;

@@ -1,7 +1,7 @@
 package com.rfgbot.anywhereparse.addon.currency;
 
 import com.rfgbot.anywhereparse.addon.Addon;
-import com.rfgbot.anywhereparse.addon.AddonException;
+import com.rfgbot.anywhereparse.addon.exception.UserInputException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,7 +43,7 @@ public class CurrencyAddon implements Addon {
         try {
             return new CurrencyExchange(Currency.getInstance("USD"), Currency.getInstance(currencyCode.toUpperCase()));
         } catch(IllegalArgumentException e) {
-            throw new AddonException("invalid currency code");
+            throw new UserInputException("invalid currency code");
         }
     }
 }
