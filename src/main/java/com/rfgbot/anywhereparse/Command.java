@@ -1,6 +1,5 @@
 package com.rfgbot.anywhereparse;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,10 +10,6 @@ public class Command {
     private List<String> parameters;
     private int start;
     private int end;
-
-    public Command() {
-        parameters = new ArrayList<>();
-    }
 
     public Command(String alias, List<String> parameters, int start, int end) {
         this.alias = alias;
