@@ -57,7 +57,7 @@ public class Main {
             AddonRegistry.getInstance().register(new MemeAddon());
         }).start();
 
-        applicationFX.start();
+        applicationFX.launchIt();
     }
 
     public static void exit() {

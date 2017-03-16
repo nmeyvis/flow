@@ -13,11 +13,15 @@ public class ApplicationFX extends Application {
         Platform.setImplicitExit(false);
     }
 
-    public void start(String... args) {
+    public void launchIt(String... args) {
         ApplicationFX.launch(args);
     }
 
-    public void displayNotification(String message) {
-        Platform.runLater(() -> new SimpleNotification(message, 3500, Sound.ERROR).show());
+    public void displayErrorNotification(String message) {
+        displayNotification(message, Sound.ERROR);
+    }
+
+    public void displayNotification(String message, Sound sound) {
+        Platform.runLater(() -> new SimpleNotification(message, 3500, sound).show());
     }
 }
