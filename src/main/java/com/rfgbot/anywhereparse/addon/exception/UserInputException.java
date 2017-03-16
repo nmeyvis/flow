@@ -6,10 +6,6 @@ package com.rfgbot.anywhereparse.addon.exception;
  * Created by nickm on 3/16/2017.
  */
 public class UserInputException extends AddonException {
-    public UserInputException(Throwable e) {
-        super(e);
-    }
-
     public UserInputException(String message) {
         super(message);
     }

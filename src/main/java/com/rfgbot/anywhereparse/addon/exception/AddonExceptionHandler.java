@@ -5,7 +5,7 @@ package com.rfgbot.anywhereparse.addon.exception;
  * Created by nickm on 3/14/2017.
  */
 public interface AddonExceptionHandler {
-    void handle(NoSuchMethodException e);
+    void handle(NoSuchAddonMethodException e);
     void handle(AddonException e);
     void handle(UserInputException e);
 }

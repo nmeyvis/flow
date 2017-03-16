@@ -5,11 +5,13 @@ import com.rfgbot.anywhereparse.addon.AddonReflectionExecutor;
 import com.rfgbot.anywhereparse.addon.AddonRegistry;
 import com.rfgbot.anywhereparse.addon.exception.AddonException;
 import com.rfgbot.anywhereparse.addon.exception.AddonExceptionHandler;
+import com.rfgbot.anywhereparse.addon.exception.NoSuchAddonMethodException;
 import com.rfgbot.anywhereparse.addon.exception.UserInputException;
 import com.rfgbot.anywhereparse.parse.CommandParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -54,15 +56,8 @@ public class Interpreter {
 
                     src = replace(src, cmd, result.toString());
 
-                } catch(NoSuchMethodException e) {
-                    errorHandler.handle(e);
-                } catch(UserInputException e) {
-                    e.setSource(addon);
-                    errorHandler.handle(e);
                 } catch(Exception e) {
-                    AddonException addonException = new AddonException(e);
-                    addonException.setSource(addon);
-                    errorHandler.handle(addonException);
+                    handleAddonException(addon, cmd, e);
                 }
             } else {
                 errorHandler.handle(new UserInputException("no addon for " + cmd.getAlias()));
@@ -70,6 +65,32 @@ public class Interpreter {
         }
 
         return src;
+    }
+
+    private void handleAddonException(Addon addon, Command cmd, Exception e) {
+        AddonException addonException;
+
+        if (e instanceof InvocationTargetException) {
+            if (e.getCause() instanceof AddonException) {
+                addonException = (AddonException) e.getCause();
+            } else {
+                addonException = new AddonException(e.getCause());
+            }
+        } else if(e instanceof AddonException) {
+            addonException = (AddonException) e;
+        } else {
+            addonException = new AddonException(e);
+        }
+
+        addonException.set(addon, cmd);
+
+        if(addonException instanceof NoSuchAddonMethodException) {
+            errorHandler.handle((NoSuchAddonMethodException) addonException);
+        } else if(addonException instanceof UserInputException) {
+            errorHandler.handle((UserInputException) addonException);
+        } else {
+            errorHandler.handle(addonException);
+        }
     }
 
     /**

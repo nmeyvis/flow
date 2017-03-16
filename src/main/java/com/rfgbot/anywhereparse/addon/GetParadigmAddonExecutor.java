@@ -1,5 +1,7 @@
 package com.rfgbot.anywhereparse.addon;
 
+import com.rfgbot.anywhereparse.addon.exception.NoSuchAddonMethodException;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -23,7 +25,7 @@ import java.util.List;
  */
 public class GetParadigmAddonExecutor implements AddonReflectionExecutor {
 
-    public Object exe(Addon addon, List<String> parameters) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public Object exe(Addon addon, List<String> parameters) throws InvocationTargetException, IllegalAccessException {
         Object obj = addon;
 
         for(String param : parameters) {
@@ -33,20 +35,26 @@ public class GetParadigmAddonExecutor implements AddonReflectionExecutor {
         return obj;
     }
 
-    private Object get(Object obj, String str) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    private Object get(Object obj, String param) throws InvocationTargetException, IllegalAccessException {
         Class<?> clazz = obj.getClass();
 
         Method method;
 
         try
         {
-            method = clazz.getMethod("get" + capitalize(str));
+            method = clazz.getMethod("get" + capitalize(param));
         }
         catch (NoSuchMethodException e) {
-            method = clazz.getMethod("get", String.class);
+            try
+            {
+                method = clazz.getMethod("get", String.class);
+            }
+            catch(NoSuchMethodException e2) {
+                throw new NoSuchAddonMethodException(param);
+            }
         }
 
-        return method.invoke(obj, str);
+        return method.invoke(obj, param);
     }
 
     private String capitalize(String str) {

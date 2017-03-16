@@ -1,5 +1,6 @@
 package com.rfgbot.anywhereparse.addon.exception;
 
+import com.rfgbot.anywhereparse.Command;
 import com.rfgbot.anywhereparse.addon.Addon;
 
 /**
@@ -7,7 +8,8 @@ import com.rfgbot.anywhereparse.addon.Addon;
  * Created by nickm on 3/14/2017.
  */
 public class AddonException extends RuntimeException {
-    private Addon source;
+    private Addon sourceAddon;
+    private Command sourceCmd;
 
     public AddonException(Throwable e) {
         super(e);
@@ -17,11 +19,24 @@ public class AddonException extends RuntimeException {
         super(message);
     }
 
-    public Addon getSource() {
-        return source;
+    public void set(Addon addon, Command cmd) {
+        setSourceAddon(addon);
+        setSourceCmd(cmd);
     }
 
-    public void setSource(Addon source) {
-        this.source = source;
+    public Addon getSourceAddon() {
+        return sourceAddon;
+    }
+
+    public void setSourceAddon(Addon sourceAddon) {
+        this.sourceAddon = sourceAddon;
+    }
+
+    public Command getSourceCmd() {
+        return sourceCmd;
+    }
+
+    public void setSourceCmd(Command sourceCmd) {
+        this.sourceCmd = sourceCmd;
     }
 }
