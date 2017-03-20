@@ -35,9 +35,8 @@ public class Main {
 
             try {
                 GlobalScreen.registerNativeHook();
-
             } catch (NativeHookException e) {
-                e.printStackTrace();
+                LOG.error("failed to register native hook", e);
             }
 
             KeyCombo trigger = new KeyCombo(NativeKeyEvent.VC_CONTROL, NativeKeyEvent.VC_ALT, NativeKeyEvent.VC_F);
@@ -67,7 +66,7 @@ public class Main {
             GlobalScreen.unregisterNativeHook();
             System.exit(1);
         } catch (NativeHookException e) {
-            e.printStackTrace();
+            LOG.error("failed to exit", e);
         }
 
 

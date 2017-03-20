@@ -72,7 +72,7 @@ public class ClipboardIO implements InputProvider, CompiledOut {
         try {
             Thread.sleep(200); // paste may use the restored clipboard if there is no delay
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            LOG.error("", e);
         }
         restore();
     }

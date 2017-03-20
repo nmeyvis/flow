@@ -33,7 +33,7 @@ public class Flow {
         try {
             output.output(interpreter.interpret(input.getInput()));
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("failed to get input", e);
         }
         LOG.debug("finished interpreting");
     }
