@@ -1,5 +1,6 @@
 package com.rfgbot.anywhereparse.addon.addons.currency;
 
+import com.rfgbot.anywhereparse.addon.exception.UserInputException;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -20,16 +21,23 @@ public class CurrencyExchange {
         this.target = target;
     }
 
-    public String get(String amount) {
+    public String get(String in) {
         try {
-            System.out.println(target.getSymbol());
-            System.out.println(target.getCurrencyCode());
+            double amount;
+            try {
+                amount = Double.parseDouble(in);
+            } catch (NumberFormatException e) {
+                throw new UserInputException(in + " is not a number");
+            }
+
             Stock stock = YahooFinance.get(target.getCurrencyCode() + "=X");
             BigDecimal price = stock.getQuote(true).getPrice();
-            BigDecimal convertedAmount = price.multiply(new BigDecimal(Double.parseDouble(amount)));
+            BigDecimal convertedAmount = price.multiply(new BigDecimal(amount));
 
             NumberFormat currencyFormat = NumberFormat.getInstance();
+            currencyFormat.setMaximumFractionDigits(2);
             currencyFormat.setCurrency(target);
+
             return currencyFormat.format(convertedAmount) +" (" +  target.getCurrencyCode() + ")";
         } catch (IOException e) {
             throw new RuntimeException(e);
