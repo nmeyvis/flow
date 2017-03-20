@@ -1,7 +1,7 @@
 package com.rfgbot.anywhereparse;
 
-import com.rfgbot.anywhereparse.key.KeyComboListener;
 import com.rfgbot.anywhereparse.key.KeyCombo;
+import com.rfgbot.anywhereparse.key.KeyComboListener;
 import org.jnativehook.GlobalScreen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,9 +40,5 @@ public class App {
 
     public KeyCombo getHotkey() {
         return hotkey;
-    }
-
-    public void setHotkey(KeyCombo hotkey) {
-        this.hotkey = hotkey;
     }
 }
