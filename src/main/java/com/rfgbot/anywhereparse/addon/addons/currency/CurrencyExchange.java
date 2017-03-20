@@ -1,4 +1,4 @@
-package com.rfgbot.anywhereparse.addon.currency;
+package com.rfgbot.anywhereparse.addon.addons.currency;
 
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;

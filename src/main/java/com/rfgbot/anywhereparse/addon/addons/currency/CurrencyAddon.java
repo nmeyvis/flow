@@ -1,4 +1,4 @@
-package com.rfgbot.anywhereparse.addon.currency;
+package com.rfgbot.anywhereparse.addon.addons.currency;
 
 import com.rfgbot.anywhereparse.addon.Addon;
 import com.rfgbot.anywhereparse.addon.exception.UserInputException;

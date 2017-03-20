@@ -1,4 +1,4 @@
-package com.rfgbot.anywhereparse.addon.meme;
+package com.rfgbot.anywhereparse.addon.addons.meme;
 
 import com.rfgbot.anywhereparse.addon.Addon;
 import com.rfgbot.anywhereparse.addon.exception.UserInputException;

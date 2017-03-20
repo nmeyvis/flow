@@ -2,9 +2,9 @@ package com.rfgbot.anywhereparse;
 
 import com.rfgbot.anywhereparse.addon.AddonRegistry;
 import com.rfgbot.anywhereparse.addon.GetParadigmAddonExecutor;
-import com.rfgbot.anywhereparse.addon.currency.CurrencyAddon;
-import com.rfgbot.anywhereparse.addon.meme.MemeAddon;
-import com.rfgbot.anywhereparse.addon.translate.TranslateAddon;
+import com.rfgbot.anywhereparse.addon.addons.currency.CurrencyAddon;
+import com.rfgbot.anywhereparse.addon.addons.meme.MemeAddon;
+import com.rfgbot.anywhereparse.addon.addons.translate.TranslateAddon;
 import com.rfgbot.anywhereparse.key.KeyCombo;
 import com.rfgbot.anywhereparse.parse.DefaultParser;
 import com.rfgbot.anywhereparse.ui.ApplicationFX;

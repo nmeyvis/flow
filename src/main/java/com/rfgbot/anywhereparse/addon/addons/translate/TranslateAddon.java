@@ -1,4 +1,4 @@
-package com.rfgbot.anywhereparse.addon.translate;
+package com.rfgbot.anywhereparse.addon.addons.translate;
 
 import com.rfgbot.anywhereparse.addon.Addon;
 
