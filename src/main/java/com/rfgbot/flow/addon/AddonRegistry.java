@@ -14,8 +14,9 @@ public class AddonRegistry {
     }
 
     // TODO: check for alias conflicts
-    public void register(Addon addon) {
+    public AddonRegistry register(Addon addon) {
         addons.add(addon);
+        return this;
     }
 
     public Addon find(String alias) {

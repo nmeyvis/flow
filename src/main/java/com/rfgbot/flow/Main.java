@@ -11,6 +11,7 @@ import com.rfgbot.flow.ui.ApplicationFX;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
+import org.slf4j.LoggerFactory;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,14 +20,17 @@ import java.util.logging.Logger;
  * Created by nickm on 3/11/2017.
  */
 public class Main {
-    static ApplicationFX applicationFX = new ApplicationFX();
+
+    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
 
         Runtime.getRuntime().addShutdownHook(new Thread(Main::exit));
 
-        new Thread(() -> {
-            System.out.println("listening...");
+        ApplicationFX applicationFX = new ApplicationFX();
+
+        new Thread(() -> { // UI and main Flow cannot be on the same thread
+            LOG.debug("listening...");
 
             Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
             logger.setLevel(Level.OFF);
@@ -46,29 +50,24 @@ public class Main {
 
             ClipboardIO clipboardIO = new ClipboardIO();
 
-            new App(trigger, clipboardIO, clipboardIO, interpreter);
+            new Flow(trigger, clipboardIO, clipboardIO, interpreter);
 
-            /*GlobalScreen.addNativeKeyListener(new KeyComboListener(KeyCombo.Native.COPY, () -> {
-                System.out.println("triggered copy");
-            }));*/
+            AddonRegistry.getInstance()
+                    .register(new CurrencyAddon())
+                    .register(new TranslateAddon())
+                    .register(new MemeAddon());
 
-            AddonRegistry.getInstance().register(new CurrencyAddon());
-            AddonRegistry.getInstance().register(new TranslateAddon());
-            AddonRegistry.getInstance().register(new MemeAddon());
         }).start();
 
         applicationFX.launchIt();
     }
 
     public static void exit() {
-
         try {
             GlobalScreen.unregisterNativeHook();
             System.exit(1);
         } catch (NativeHookException e) {
             LOG.error("failed to exit", e);
         }
-
-
     }
 }
