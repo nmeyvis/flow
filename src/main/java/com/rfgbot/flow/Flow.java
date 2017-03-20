@@ -11,15 +11,15 @@ import java.io.IOException;
 /**
  * Created by nickm on 3/12/2017.
  */
-public class App {
-    private static final Logger LOG = LoggerFactory.getLogger(App.class);
+public class Flow {
+    private static final Logger LOG = LoggerFactory.getLogger(Flow.class);
 
     private KeyCombo hotkey;
     private InputProvider input;
     private CompiledOut output;
     private Interpreter interpreter;
 
-    public App(KeyCombo hotkey, InputProvider input, CompiledOut output, Interpreter interpreter) {
+    public Flow(KeyCombo hotkey, InputProvider input, CompiledOut output, Interpreter interpreter) {
         this.hotkey = hotkey;
         this.input = input;
         this.output = output;

@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rfgbot</groupId>
-    <artifactId>anywhere-parse</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>flow</artifactId>
+    <version>1.0-prototype</version>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.1stleg/jnativehook -->
