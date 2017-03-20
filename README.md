@@ -35,6 +35,12 @@ the end of your message, you can omit the pipe.
 
 Pressing the hotkey `CTRL + ALT + F` will replace your text with the evaluted output.
 
+## Download
+
+You can download the latest binaries from the [releases](/releases) page. Extract the zip, and run the provided batch
+to start Flow.
+
+
 ## Current Addons
 
 ### Currency
@@ -98,3 +104,5 @@ Flow is still highly WIP and is mostly a prototype at the moment.
 * Make a more natural templating / query language
 * Possibly add a GUI alternative to the language
 * User configuration (custom hot keys, etc)
+* Native installers
+* Website
