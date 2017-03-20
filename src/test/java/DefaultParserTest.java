@@ -19,7 +19,7 @@ public class DefaultParserTest {
     public void testSingleCommand() {
         final String[] testsOneParam = new String[] {
                 "$alias:param1",
-                "$alias:param1",
+                "$alias:param1|",
                 "testing before, $alias:param1",
                 "testing before, $alias:param1|",
                 "$alias:param1|, testing after",
