@@ -8,12 +8,12 @@ import com.rfgbot.anywhereparse.addon.Addon;
 public class TranslateAddon implements Addon {
     @Override
     public String getName() {
-        return "translate";
+        return "Translate";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "Translates your text into any language";
     }
 
     @Override

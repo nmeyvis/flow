@@ -16,7 +16,6 @@ public class MemeAddon implements Addon {
     static {
         memeMap.put("fliptable", "(╯°□°）╯︵ ┻━┻");
         memeMap.put("knife", ")xxxxx[;;;;;;;;;>");
-        memeMap.put("boobs", "(.)(.)");
         memeMap.put("smug", "(‾⌣‾)");
         memeMap.put("gimme", "༼ つ ◕_◕ ༽つ");
         memeMap.put("stroll", "ᕕ( ᐛ )ᕗ");
@@ -31,7 +30,7 @@ public class MemeAddon implements Addon {
 
     @Override
     public String getDescription() {
-        return null;
+        return "gets you the memes";
     }
 
     @Override
