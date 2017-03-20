@@ -15,7 +15,7 @@ public class CurrencyAddon implements Addon {
 
     @Override
     public String getName() {
-        return "Currecy Util";
+        return "Currency Util";
     }
 
     @Override
