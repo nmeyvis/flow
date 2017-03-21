@@ -21,8 +21,6 @@ public class ClipboardIO implements InputProvider, CompiledOut {
     private Clipboard clipboard;
     private Robot robot;
 
-    private String clipboardRestore; // used to restore the clipboard contents
-
     public ClipboardIO() {
         clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         try {
@@ -32,12 +30,6 @@ public class ClipboardIO implements InputProvider, CompiledOut {
         }
     }
 
-    private void restore() {
-        LOG.debug("restoring clipboard to: " + clipboardRestore);
-        StringSelection selection = new StringSelection(clipboardRestore);
-        clipboard.setContents(selection, selection);
-    }
-
     /**
      * Gets the input by selecting everything at the cursor, then copies it into the clipboard for reading
      * @return the read text
@@ -45,8 +37,8 @@ public class ClipboardIO implements InputProvider, CompiledOut {
      */
     @Override
     public String getInput() throws IOException {
+        // TODO: consider capturing and restoring the clipboard before we use it as transport; needs to support files
         try {
-            clipboardRestore = (String) clipboard.getData(DataFlavor.stringFlavor);
             Thread.sleep(100); // otherwise may combine keys presses with event that calls this
             KeyCombo.AWT.SELECT_ALL.emulate(robot);
             KeyCombo.AWT.COPY.emulate(robot);
@@ -74,6 +66,5 @@ public class ClipboardIO implements InputProvider, CompiledOut {
         } catch (InterruptedException e) {
             LOG.error("", e);
         }
-        restore();
     }
 }
