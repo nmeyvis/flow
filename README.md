@@ -37,7 +37,7 @@ Pressing the hotkey `CTRL + ALT + F` will replace your text with the evaluted ou
 
 ## Download
 
-You can download the latest binaries from the [releases](/releases) page. Extract the zip, and run the provided batch
+You can download the latest binaries from the [releases](https://github.com/nmeyvis/flow/releases) page. Extract the zip, and run the provided batch
 to start Flow.
 
 
